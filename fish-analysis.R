@@ -15,3 +15,15 @@ fishData %>%
   mutate(length_cat = case_when(length >= 300 ~ "big",
                                 length < 300 ~ "small")) ->fishData
 head(fishData)
+
+# histogram of scale length, fill is by length_cat
+#facetwrap length_cat w/themes 
+#invite Chris to the respository (in the settings there is collaborator to invite hom
+
+source("R/Theme.R")
+
+fishData %>% 
+ggplot() +
+  geom_histogram(aes(x= scalelength, fill = length_cat)) +
+  facet_wrap(~length_cat) +
+  theme_presentation()
